@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "trap_check"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}
