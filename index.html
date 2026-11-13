@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trap Check: red flags for Solana meme coins</title>
+  <meta name="description" content="Paste a Solana token address and get a red-flag report with receipts from public data. An open agentic website: its assistant runs in your browser on your own AI key, and other agent sites can call it.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assistant.css">
+  <script type="module" src="app.js"></script>
+  <script type="module" src="site.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <p class="brand">Trap Check</p>
+      <h1>Is this meme coin a trap?</h1>
+      <p class="lede">Paste a Solana token address. Trap Check reads public market data and on-chain risk flags, applies fixed rules you can read below, and shows every number with a link to its source. Receipts only: no hype and no buy or sell calls.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" aria-labelledby="check-heading">
+      <h2 id="check-heading">Check a token</h2>
+      <form id="check-form" autocomplete="off">
+        <label for="address">Solana token (mint) address</label>
+        <div class="row">
+          <input id="address" name="address" type="text" inputmode="text" spellcheck="false" placeholder="e.g. DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263" required>
+          <button id="check-button" type="submit">Check token</button>
+        </div>
+        <p class="hint">Try an example:
+          <button type="button" class="link" data-example="DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263">BONK</button>
+          <button type="button" class="link" data-example="JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN">JUP</button>
+          or copy a fresh address from pump.fun or DexScreener.
+        </p>
+      </form>
+      <div id="report" class="report" aria-live="polite">
+        <p class="empty">No token checked yet.</p>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="rules-heading">
+        <h2 id="rules-heading">What we check</h2>
+        <p>Red flag = <strong>High risk</strong>. Two or more amber flags = <strong>Caution</strong>. Otherwise: <strong>No major red flags found</strong>, which is never a guarantee.</p>
+        <ul id="rules-list" class="flags"></ul>
+      </section>
+      <section class="card" aria-labelledby="recent-heading">
+        <h2 id="recent-heading">Your recent checks</h2>
+        <p class="hint">Kept in this browser only.</p>
+        <ul id="recent-list" class="recent"></ul>
+        <button id="clear-recent" type="button" class="secondary">Clear list</button>
+      </section>
+    </div>
+
+    <section id="assistant" class="assistant card" aria-labelledby="assistant-heading">
+      <h2 id="assistant-heading">Ask Trap Check</h2>
+      <p>Ask in plain words: check a token, compare two, or ask what a red flag means. The assistant runs the same checks as the form above and answers only from their results.</p>
+      <p class="assistant-note">Your messages and this page's data go to the AI provider you choose in the settings below, on your own key. Trap Check has no server and stores nothing.</p>
+      <p id="assistant-status" role="status">Connecting the assistant… If this message stays, the assistant could not load. You can still use the page directly.</p>
+      <div id="agent-app">
+        <div data-ns-slot="header"></div>
+        <div class="assistant-panels">
+          <div data-ns-slot="chat"></div>
+          <div data-ns-slot="agents"></div>
+        </div>
+        <div data-ns-slot="settings"></div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="agents-heading">
+      <h2 id="agents-heading">For AI agents</h2>
+      <p>This is an <a href="https://worldwideagenticweb.org" target="_blank" rel="noopener">open agentic website</a>. Its agent network is public: <a href="trap_check.network.json">trap_check.network.json</a>, listed in <a href="agent-manifest.json">agent-manifest.json</a>. Other agent sites can call it at this folder's URL followed by <code>trap_check</code>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>Data: <a href="https://dexscreener.com" target="_blank" rel="noopener">DexScreener</a> and <a href="https://rugcheck.xyz" target="_blank" rel="noopener">RugCheck</a> public APIs. Not financial advice. A clean report does not make a coin safe. Made by <a href="https://x.com/issam0pc4u" target="_blank" rel="noopener">@issam0pc4u</a>.</p>
+  </footer>
+</body>
+</html>

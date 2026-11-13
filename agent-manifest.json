@@ -1,0 +1,82 @@
+{
+  "brand": "Trap Check Assistant",
+  "networks": [
+    {
+      "name": "trap_check",
+      "front_man": "trap_check_assistant",
+      "hocon": "./trap_check.network.json",
+      "description": "Checks Solana meme coins for scam red flags from live public data and explains each flag with its numbers and sources.",
+      "tags": [
+        "agentified-website",
+        "crypto",
+        "solana",
+        "scam-detection",
+        "consumer-protection"
+      ],
+      "sample_queries": [
+        "What does Trap Check look at before it calls a token high risk?",
+        "Check this token: DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        "Compare DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263 and JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN: which has more red flags?",
+        "Which of my recent checks looked the riskiest?",
+        "Will this coin go up 10x? Should I buy it?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "trap_check",
+    "front_man": "trap_check_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#0f5f56"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "trap_check",
+        "front_man": "trap_check_assistant",
+        "aliases": [
+          "trap_check",
+          "trap_check_assistant"
+        ],
+        "url": "trap_check"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_site_facts",
+      "get_page_state",
+      "check_token"
+    ]
+  }
+}
