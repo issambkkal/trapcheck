@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "trap_check",
+      "front_man": "trap_check_assistant",
+      "aliases": [
+        "trap_check",
+        "trap_check_assistant"
+      ],
+      "url": "trap_check"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}
